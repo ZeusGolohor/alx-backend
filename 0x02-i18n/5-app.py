@@ -55,7 +55,7 @@ def before_request():
     """
     A method to run before any request is made.
     """
-    user_id = int(request.args.get('login_as', 0))
+    user_id = int(request.args.get('login_as'))
     g.user = get_user(user_id) if user_id else None
 
 
@@ -65,11 +65,7 @@ def index():
     A method to define the index if the application.
     A method to determine the welcome message.
     """
-    if g.user:
-        message = _('logged_in_as', username=g.user['name'])
-    else:
-        message = _('not_logged_in')
-    return render_template('3-index.html', message=message)
+    return render_template('5-index.html')
 
 
 if __name__ == '__main__':
