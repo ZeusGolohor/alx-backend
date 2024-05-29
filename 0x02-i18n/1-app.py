@@ -6,11 +6,6 @@ from flask import Flask, render_template
 from flask_babel import Babel
 
 
-app = Flask(__name__)
-app.config.from_pyfile('mysettings.cfg')
-babel = Babel(app)
-
-
 class Config():
     """
     A class to configure the application locale.
@@ -20,7 +15,9 @@ class Config():
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
+app = Flask(__name__)
 app.config.from_object(Config)
+babel = Babel(app)
 
 
 @app.route('/', strict_slashes=False)
